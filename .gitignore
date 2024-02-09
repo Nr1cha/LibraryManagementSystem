@@ -1,0 +1,15 @@
+#Node.js
+node_modules/
+
+# macOS finder. for when i also want to work on linux or windows
+.DS_Store
+
+#Logs
+logs/
+*.log
+
+#Environment variables
+.env
+
+#NPM 
+*.npmrc
