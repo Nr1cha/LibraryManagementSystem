@@ -1,8 +1,7 @@
-// controllers/bookController.js
-
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:27017/";
 
+//get a list of all books
 exports.book_list = function (req, res) {
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;
@@ -15,6 +14,7 @@ exports.book_list = function (req, res) {
     });
 };
 
+//create a book
 exports.book_create = function (req, res) {
     MongoClient.connect(url, function (err, db) {
         if (err) throw err;

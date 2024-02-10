@@ -1,9 +1,6 @@
-// routes/bookRoutes.js
-
-var express = require('express');
-var router = express.Router();
-
-var book_controller = require('../controllers/bookController');
+const express = require('express');
+const router = express.Router();
+const book_controller = require('../controllers/bookController');
 
 // GET request for list of all Book items.
 router.get('/books', book_controller.book_list);
