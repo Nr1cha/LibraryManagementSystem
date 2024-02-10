@@ -1,0 +1,19 @@
+http://localhost:3000/books
+
+###
+//get book
+http://localhost:3000/books/65c6b153471d16e6f273725d
+
+#####POST
+POST http://localhost:3000/books/65c6b153471d16e6f273725d HTTP/1.1
+content-type: application/json
+
+{
+                "Title": "The Great Gosh",
+                "Author": "brooke",
+                "Genre": "misty",
+                "Publisher": "pokemon",
+                "ISBN": "8675309",
+                "PublishedYear": "1988",
+                "AvailabilityStatus": "Checked Out"
+}
