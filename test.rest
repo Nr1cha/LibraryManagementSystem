@@ -2,7 +2,7 @@ http://localhost:3000/books
 
 ###
 //get book
-# http://localhost:3000/books/65c6ac76471d16e6f2737259
+http://localhost:3000/books/65c6ac76471d16e6f2737259
 
 #####POST
 POST http://localhost:3000/books/65c6b153471d16e6f273725d HTTP/1.1
@@ -17,3 +17,53 @@ content-type: application/json
                 "PublishedYear": "1988",
                 "AvailabilityStatus": "Checked Out"
 }
+
+###
+# RENDER PROD TESTING
+
+
+GET https://library-wkyz.onrender.com/books HTTP/1.1
+content-type: application/json
+###
+
+
+
+GET https://library-wkyz.onrender.com/books/65c6b153471d16e6f273725d HTTP/1.1
+content-type: application/json
+###
+
+
+
+POST https://library-wkyz.onrender.com/books/65ac0ba81410d142166acbe1 HTTP/1.1
+content-type: application/json
+
+{
+                "Title": "The Great Gosh",
+                "Author": "brooke",
+                "Genre": "misty",
+                "Publisher": "pokemon",
+                "ISBN": "8675309",
+                "PublishedYear": "1988",
+                "AvailabilityStatus": "Checked Out"
+}
+
+###
+
+
+PUT https://library-wkyz.onrender.com/books/create HTTP/1.1
+content-type: application/json
+
+{
+                "Title": "The Great Gosh",
+                "Author": "brooke",
+                "Genre": "misty",
+                "Publisher": "pokemon",
+                "ISBN": "8675309",
+                "PublishedYear": "1988",
+                "AvailabilityStatus": "Checked Out"
+}
+
+
+###
+DELETE https://library-wkyz.onrender.com/books/65b5c7ed8d64a476bba785e0 HTTP/1.1
+content-type: application/json
