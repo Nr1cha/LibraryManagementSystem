@@ -102,6 +102,71 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Method Not Allowed"
+          }
+        }
+      }
+    },
+    "/books/create": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Title": {
+                  "type": "string",
+                  "example": "Title"
+                },
+                "Author": {
+                  "type": "string",
+                  "example": "Author"
+                },
+                "Genre": {
+                  "type": "string",
+                  "example": "Genre"
+                },
+                "Publisher": {
+                  "type": "string",
+                  "example": "Publisher"
+                },
+                "ISBN": {
+                  "type": "string",
+                  "example": "ISBN"
+                },
+                "PublishedYear": {
+                  "type": "string",
+                  "example": "PublishedYear"
+                },
+                "AvailabilityStatus": {
+                  "type": "string",
+                  "example": "AvailabilityStatus"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Method Not Allowed"
+          }
+        }
       }
     }
   }

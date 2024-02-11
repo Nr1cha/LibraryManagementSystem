@@ -15,4 +15,27 @@ router.get("/:id", getSingleBook);
 // POST request for creating Book.
 router.post('/:id', updateBook);
 
+//dummy put route
+router.put('/create', (req, res) => {
+    /*  #swagger.parameters['body'] = {
+        in: 'body',
+        schema: {
+                Title: 'Title',
+                Author: 'Author',
+                Genre: 'Genre',
+                Publisher: 'Publisher',
+                ISBN: 'ISBN',
+                PublishedYear: 'PublishedYear',
+                AvailabilityStatus: 'AvailabilityStatus'
+        }
+    } 
+    */
+    res.status(405).send('Not Implemented')
+});
+
+//dummy delete route
+router.delete('/:id', (req, res) => {
+    res.status(405).send('Not Implemented')
+});
+
 module.exports = router;
