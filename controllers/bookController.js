@@ -1,12 +1,19 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:3000/";
-const { getAllBooksModel, updateBookModel } = require("../models/book");
+const { getAllBooksModel, updateBookModel, getSingleBookModel } = require("../models/book");
 
 //get a list of all books
 async function getAllBooks(req, res) {
     const bookCollection = await getAllBooksModel();
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(bookCollection);
+}
+
+//get a single book
+async function getSingleBook(req, res) {
+    const singleBook = await getSingleBookModel(req.params.id);
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(singleBook);
 }
 
 // exports.book_list = function (req, res) {
@@ -40,7 +47,9 @@ async function updateBook(req, res) {
     const response = await updateBookModel(req.params.id, payload);
     res.setHeader('Content-Type', 'application/json');
     if (response.acknowledged) {
-        res.status(201).json(response);
+        res.status(201).json({
+            updated: true
+        });
     } else {
         res.status(500).json(response.err || 'Some error occurred while creating the book entry.');
     }
@@ -59,4 +68,4 @@ async function updateBook(req, res) {
 //     });
 // };
 
-module.exports = { getAllBooks, updateBook };
+module.exports = { getAllBooks, updateBook, getSingleBook };

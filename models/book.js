@@ -7,6 +7,13 @@ async function getAllBooksModel() {
     return db.collection("Book").find().toArray();
 };
 
+//get single book
+// get single contact
+async function getSingleBookModel(id) {
+    const db = await getDb();
+    return db.collection("Book").find({ "_id": new ObjectId(id) }).toArray();
+};
+
 //post function
 async function updateBookModel(id, payload = {}) {
     const db = await getDb();
@@ -26,4 +33,4 @@ async function updateBookModel(id, payload = {}) {
     )
 }
 
-module.exports = { getAllBooksModel, updateBookModel };
+module.exports = { getAllBooksModel, updateBookModel, getSingleBookModel };

@@ -1,0 +1,108 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Book API",
+    "version": "1.0.0",
+    "description": "Manage books"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/books/": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/books/{id}": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Title": {
+                  "type": "string",
+                  "example": "Title"
+                },
+                "Author": {
+                  "type": "string",
+                  "example": "Author"
+                },
+                "Genre": {
+                  "type": "string",
+                  "example": "Genre"
+                },
+                "Publisher": {
+                  "type": "string",
+                  "example": "Publisher"
+                },
+                "ISBN": {
+                  "type": "string",
+                  "example": "ISBN"
+                },
+                "PublishedYear": {
+                  "type": "string",
+                  "example": "PublishedYear"
+                },
+                "AvailabilityStatus": {
+                  "type": "string",
+                  "example": "AvailabilityStatus"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
