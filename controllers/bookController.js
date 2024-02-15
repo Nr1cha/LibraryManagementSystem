@@ -68,4 +68,31 @@ async function updateBook(req, res) {
 //     });
 // };
 
-module.exports = { getAllBooks, updateBook, getSingleBook };
+
+// adding put logic
+async function setSingleBook(req, res) {
+    /*  #swagger.parameters['body'] = {
+    in: 'body',
+        schema: {
+                Title: 'Title',
+                Author: 'Author',
+                Genre: 'Genre',
+                Publisher: 'Publisher',
+                ISBN: 'ISBN',
+                PublishedYear: 'PublishedYear',
+                AvailabilityStatus: 'AvailabilityStatus'
+        }
+} 
+*/
+    const payload = req.body;
+    const response = await setSingleBookModel(payload);
+    res.setHeader('Content-Type', 'application/json');
+    if (response.acknowledged) {
+        res.status(204).json(response);
+    } else {
+        console.log(response)
+        res.status(500).json(response.error || 'Some error occurred while creating the book.');
+    }
+}
+
+module.exports = { getAllBooks, updateBook, getSingleBook, setSingleBook };

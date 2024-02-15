@@ -33,4 +33,22 @@ async function updateBookModel(id, payload = {}) {
     )
 }
 
-module.exports = { getAllBooksModel, updateBookModel, getSingleBookModel };
+
+// put function for book
+async function setSingleBookModel(payload = {}) {
+    const db = await getDb();
+
+    return db.collection("Book").insertOne(
+        {
+            Title: payload.Title,
+            Author: payload.Author,
+            Genre: payload.Genre,
+            Publisher: payload.Publisher,
+            ISBN: payload.ISBN,
+            PublishedYear: payload.PublishedYear,
+            AvailabilityStatus: payload.AvailabilityStatus
+        }
+    )
+};
+
+module.exports = { getAllBooksModel, updateBookModel, getSingleBookModel, setSingleBookModel };

@@ -3,7 +3,8 @@ const router = express.Router();
 const {
     getAllBooks,
     updateBook,
-    getSingleBook
+    getSingleBook,
+    setSingleBook
 } = require('../controllers/bookController');
 
 // GET request for list of all Book items.
@@ -16,22 +17,7 @@ router.get("/:id", getSingleBook);
 router.post('/:id', updateBook);
 
 //dummy put route
-router.put('/create', (req, res) => {
-    /*  #swagger.parameters['body'] = {
-        in: 'body',
-        schema: {
-                Title: 'Title',
-                Author: 'Author',
-                Genre: 'Genre',
-                Publisher: 'Publisher',
-                ISBN: 'ISBN',
-                PublishedYear: 'PublishedYear',
-                AvailabilityStatus: 'AvailabilityStatus'
-        }
-    } 
-    */
-    res.status(405).send('Not Implemented')
-});
+router.put('/create', setSingleBook);
 
 //dummy delete route
 router.delete('/:id', (req, res) => {
