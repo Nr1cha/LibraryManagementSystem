@@ -8,7 +8,6 @@ async function getAllBooksModel() {
 };
 
 //get single book
-// get single contact
 async function getSingleBookModel(id) {
     const db = await getDb();
     return db.collection("Book").find({ "_id": new ObjectId(id) }).toArray();
@@ -51,4 +50,15 @@ async function setSingleBookModel(payload = {}) {
     )
 };
 
-module.exports = { getAllBooksModel, updateBookModel, getSingleBookModel, setSingleBookModel };
+
+
+// delete funtion
+async function deleteSingleBookModel(id) {
+    const db = await getDb();
+
+    return db.collection("Book").deleteOne(
+        { "_id": new ObjectId(id) }
+    );
+};
+
+module.exports = { getAllBooksModel, updateBookModel, getSingleBookModel, setSingleBookModel, deleteSingleBookModel };

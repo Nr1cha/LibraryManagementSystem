@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:3000/";
-const { getAllBooksModel, updateBookModel, getSingleBookModel } = require("../models/book");
+const { getAllBooksModel, updateBookModel, getSingleBookModel, setSingleBookModel, deleteSingleBookModel } = require("../models/book");
 
 //get a list of all books
 async function getAllBooks(req, res) {
@@ -95,4 +95,14 @@ async function setSingleBook(req, res) {
     }
 }
 
-module.exports = { getAllBooks, updateBook, getSingleBook, setSingleBook };
+
+
+// delete logic
+async function deleteSingleBook(req, res) {
+    const singleBook = await deleteSingleBookModel(req.params.id);
+
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(singleBook);
+}
+
+module.exports = { getAllBooks, updateBook, getSingleBook, setSingleBook, deleteSingleBook };
