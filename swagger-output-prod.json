@@ -41,6 +41,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -79,12 +82,12 @@
                   "example": "Publisher"
                 },
                 "ISBN": {
-                  "type": "string",
-                  "example": "ISBN"
+                  "type": "number",
+                  "example": 12345
                 },
                 "PublishedYear": {
-                  "type": "string",
-                  "example": "PublishedYear"
+                  "type": "number",
+                  "example": 1998
                 },
                 "AvailabilityStatus": {
                   "type": "string",
@@ -98,6 +101,9 @@
           "201": {
             "description": "Created"
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -105,6 +111,9 @@
       },
       "delete": {
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -114,8 +123,11 @@
           }
         ],
         "responses": {
-          "405": {
-            "description": "Method Not Allowed"
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -123,6 +135,9 @@
     "/books/create": {
       "put": {
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "body",
@@ -147,12 +162,12 @@
                   "example": "Publisher"
                 },
                 "ISBN": {
-                  "type": "string",
-                  "example": "ISBN"
+                  "type": "number",
+                  "example": 12345
                 },
                 "PublishedYear": {
-                  "type": "string",
-                  "example": "PublishedYear"
+                  "type": "number",
+                  "example": 1988
                 },
                 "AvailabilityStatus": {
                   "type": "string",
@@ -163,8 +178,14 @@
           }
         ],
         "responses": {
-          "405": {
-            "description": "Method Not Allowed"
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

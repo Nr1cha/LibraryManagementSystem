@@ -10,6 +10,13 @@ app.use(cors());
 app.use(bodyParser.json()); // for parsing application/json
 app.use('/', routes)
 
+//error handling
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send({ message: err.message });
+});
+
+
 connectToServer((err) => {
     if (err) {
         console.log(err);
