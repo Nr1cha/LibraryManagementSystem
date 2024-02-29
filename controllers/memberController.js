@@ -32,13 +32,11 @@ async function updateMember(req, res, next) {
         /*  #swagger.parameters['body'] = {
         in: 'body',
         schema: {
-                Title: 'Title',
-                Author: 'Author',
-                Genre: 'Genre',
-                Publisher: 'Publisher',
-                ISBN: 12345,
-                PublishedYear: 1998,
-                AvailabilityStatus: 'AvailabilityStatus'
+                firstName: 'firstName',
+                lastName: 'lastName',
+                email: 'example@email.com',
+                phone: '555-555-555',
+                memstatus: 'Active'
         }
     } 
     */
@@ -62,15 +60,13 @@ async function setSingleMember(req, res, next) {
     try {
         /*  #swagger.parameters['body'] = {
         in: 'body',
-            schema: {
-                    Title: 'Title',
-                    Author: 'Author',
-                    Genre: 'Genre',
-                    Publisher: 'Publisher',
-                    ISBN: 12345,
-                    PublishedYear: 1988,
-                    AvailabilityStatus: 'AvailabilityStatus'
-            }
+        schema: {
+                firstName: 'firstName',
+                lastName: 'lastName',
+                email: 'example@email.com',
+                phone: '555-555-555',
+                memstatus: 'Active'
+        }
     } 
     */
         const payload = req.body;

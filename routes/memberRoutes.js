@@ -14,7 +14,7 @@ const { bookIdSchema,
 // GET request for list of all Member items.
 router.get('/', getAllMembers);
 
-//GET single book
+//GET single member
 router.get("/:id", bookIdSchema, getSingleMember);
 
 // POST request for creating Member.

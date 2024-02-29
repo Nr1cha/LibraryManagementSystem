@@ -1,13 +1,13 @@
 const { ObjectId } = require("mongodb");
 const { getDb } = require("../db");
 
-//get all books
+//get all members
 async function getAllMembersModel() {
     const db = await getDb();
     return db.collection("member").find().toArray();
 };
 
-//get single book
+//get single member
 async function getSingleMemberModel(id) {
     const db = await getDb();
     return db.collection("member").find({ "_id": new ObjectId(id) }).toArray();
@@ -20,32 +20,28 @@ async function updateMemberModel(id, payload = {}) {
         { "_id": new ObjectId(id) },
         {
             $set: {
-                Title: payload.Title,
-                Author: payload.Author,
-                Genre: payload.Genre,
-                Publisher: payload.Publisher,
-                ISBN: payload.ISBN,
-                PublishedYear: payload.PublishedYear,
-                AvailabilityStatus: payload.AvailabilityStatus
+                firstName: payload.firstName,
+                lastName: payload.lastName,
+                email: payload.email,
+                phone: payload.phone,
+                memstatus: payload.memstatus
             }
         }
     )
 }
 
 
-// put function for book
+// put function for member
 async function setSingleMemberModel(payload = {}) {
     const db = await getDb();
 
     return db.collection("member").insertOne(
         {
-            Title: payload.Title,
-            Author: payload.Author,
-            Genre: payload.Genre,
-            Publisher: payload.Publisher,
-            ISBN: payload.ISBN,
-            PublishedYear: payload.PublishedYear,
-            AvailabilityStatus: payload.AvailabilityStatus
+            firstName: payload.firstName,
+            lastName: payload.lastName,
+            email: payload.email,
+            phone: payload.phone,
+            memstatus: payload.memstatus
         }
     )
 };
