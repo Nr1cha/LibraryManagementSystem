@@ -1,14 +1,14 @@
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb://localhost:3000/";
-const { getAllMemberModel, updateMemberModel, getSingleMemberModel, setSingleMemberModel, deleteSingleMemberModel } = require("../models/book");
+const { getAllMembersModel, updateMemberModel, getSingleMemberModel, setSingleMemberModel, deleteSingleMemberModel } = require("../models/member");
 
 //get a list of all books
 async function getAllMembers(req, res, next) {
     try {
         // throw new Error('Intentional Error'); //testing error
-        const bookCollection = await getAllMembersModel();
+        const memberCollection = await getAllMembersModel();
         res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(bookCollection);
+        res.status(200).json(memberCollection);
     } catch (err) {
         next(err);
     }

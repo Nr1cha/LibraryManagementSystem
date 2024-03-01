@@ -9,6 +9,14 @@ const swaggerDefinition = (host, lane) => ({
     },
     host: host, // Change this to your actual host
     schemes: lane === 'local' ? ['http'] : ['https'], // Use 'https' if applicable
+    // adding the member API definition
+    memberAPI: {
+        title: 'Member API',
+        version: '1.0.0',
+        description: 'Manage library members',
+    },
+    host: host, // Change this to your actual host
+    schemes: lane === 'local' ? ['http'] : ['https'], // Use 'https' if applicable
 });
 const routes = ['./routes/index.js'];
 

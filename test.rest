@@ -1,3 +1,4 @@
+# TESTING BOOKS
 ###
 GET http://localhost:3000/books HTTP/1.1
 content-type: application/json
@@ -44,6 +45,77 @@ content-type: application/json
 ###
 DELETE http://localhost:3000/books/65b5c7ed8d64a476bba785e0 HTTP/1.1
 content-type: application/json
+
+
+
+
+
+
+
+
+
+
+# TESTING MEMBER
+###
+GET http://localhost:3000/members HTTP/1.1
+content-type: application/json
+###
+
+
+
+GET http://localhost:3000/members/65e1085a4c4d2bd88dab8f6e HTTP/1.1
+content-type: application/json
+###
+
+
+
+POST http://localhost:3000/members/65e1085a4c4d2bd88dab8f6e HTTP/1.1
+content-type: application/json
+
+{
+                "firstName": "firstName",
+                "lastName": "lastName",
+                "email": "example@email.com",
+                "phone": "555-555-555",
+                "memstatus": "Active"
+}
+
+###
+
+
+PUT http://localhost:3000/members/create HTTP/1.1
+content-type: application/json
+
+{
+                "firstName": "firstName",
+                "lastName": "lastName",
+                "email": "example@email.com",
+                "phone": "555-555-555",
+                "memstatus": "Active"
+}
+
+
+###
+DELETE http://localhost:3000/members/65e1085a4c4d2bd88dab8f6e HTTP/1.1
+content-type: application/json
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ###
 # RENDER PROD TESTING
