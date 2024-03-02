@@ -5,18 +5,12 @@ const { connectToServer } = require("./db");
 const bodyParser = require("body-parser");
 const routes = require('./routes');
 const cors = require('cors');
-const { auth } = require('express-openid-connect');
+const { auth, requiresAuth } = require('express-openid-connect');
 
 
 app.use(cors());
 app.use(bodyParser.json()); // for parsing application/json
-app.use('/', routes)
 
-//error handling
-app.use(function (err, req, res, next) {
-    console.error(err.stack);
-    res.status(500).send({ message: err.message });
-});
 
 const config = {
     authRequired: false,
@@ -33,12 +27,25 @@ app.use(auth(config));
 // req.isAuthenticated is provided from the auth router
 app.get('/', (req, res) => {
     if (!req.oidc.isAuthenticated()) {
-        res.redirect('/login');
+        res.send('Logged out')
     } else {
         res.send('Logged in');
     }
 });
 
+//use the requiresAuth middleware for the routes i want to protect
+app.use('/', requiresAuth(), routes) //protect all routes
+
+// Add the /profile route from the first code block
+app.get('/profile', requiresAuth(), (req, res) => {
+    res.send(`hello ${req.oidc.user.name}`);
+});
+
+//error handling
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send({ message: err.message });
+});
 
 connectToServer((err) => {
     if (err) {
