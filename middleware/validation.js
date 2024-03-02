@@ -44,7 +44,7 @@ const memberSchema = Joi.object({
     lastName: Joi.string().min(1).required(),
     email: Joi.string().min(1).required(),
     phone: Joi.string().min(1).required(),
-    memstatus: Joi.number().integer().min(1).required().strict()
+    memstatus: Joi.string().min(1).required()
 });
 
 // Validate POST-id
