@@ -25,6 +25,15 @@ const bookSchema = Joi.object({
     AvailabilityStatus: Joi.string().min(1).required()
 });
 
+// Define SECOND schema
+const memberSchema = Joi.object({
+    firstName: Joi.string().min(1).required(),
+    lastName: Joi.string().min(1).required(),
+    email: Joi.string().min(1).required(),
+    phone: Joi.string().min(1).required(),
+    memstatus: Joi.number().integer().min(1).required().strict()
+});
+
 // Validate POST-id
 const validateBookPost = (req, res, next) => {
     const { error } = bookSchema.validate(req.body);
@@ -38,5 +47,18 @@ const validateBookPost = (req, res, next) => {
     }
 };
 
+// Validate POST-id
+const validateMemberPost = (req, res, next) => {
+    const { error } = memberSchema.validate(req.body);
 
-module.exports = { bookIdSchema, validateBookPost };
+    if (error) {
+        // There are errors. Render the form again with sanitized values/error messages.
+        res.status(400).json({ errors: error.details });
+    } else {
+        // Data from form is valid.
+        next();
+    }
+};
+
+
+module.exports = { bookIdSchema, validateBookPost, validateMemberPost };
