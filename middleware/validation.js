@@ -14,6 +14,19 @@ const bookIdSchema = (req, res, next) => {
     next();
 };
 
+//validate GET-id
+const memberIdSchema = (req, res, next) => {
+    const id = req.params.id;
+
+    // Check if the id is a valid ObjectId
+    if (!ObjectId.isValid(id)) {
+        return res.status(400).json({ error: 'Invalid member id, please add a valid id' });
+    }
+
+    // If validation passes, call next() to proceed to the controller function
+    next();
+};
+
 // Define the schema
 const bookSchema = Joi.object({
     Title: Joi.string().min(1).required(),
@@ -61,4 +74,4 @@ const validateMemberPost = (req, res, next) => {
 };
 
 
-module.exports = { bookIdSchema, validateBookPost, validateMemberPost };
+module.exports = { bookIdSchema, memberIdSchema, validateBookPost, validateMemberPost };
